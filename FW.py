@@ -1,3 +1,15 @@
+import numpy as np
+from IPython.core.magics.osm import line_cell_magic
+from inspect import isfunction
+import matplotlib.pyplot as plt
+import sympy as sym
+import copy
+import time
+np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
+from graph import *
+from otherFun import *
+from paths import *
+
 #Function that implements the bisection method to find the root of a given function.
 #INPUT: - f: Function to find the root of. It is assumed the function maps real numbers
 #             to real numbers, and not vectors to real numbers.
@@ -179,11 +191,7 @@ def FrankWolfe(graph,P,r,maxIt=int(1e5),LSTol=1e-8,itTol=1e-8):
 
     #Compute the "error" (that is the maximal difference between iterations)
     # and put this in the error array.
-    errNew = 0
-    for i in range(0,len(graph.V)):
-      for j in range(0,len(graph.V)):
-        errNew += graph.costMatrix[i][j](x_n[i][j])*(x_n[i][j]-s_n[i][j])
-    err = errNew
+    err = (np.max(np.absolute(x_n-x_new)))
     errorList = np.append(errorList,err)
   
     #If this is less than the tolerance, we are done.

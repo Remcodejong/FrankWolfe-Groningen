@@ -1,3 +1,16 @@
+import numpy as np
+from IPython.core.magics.osm import line_cell_magic
+from inspect import isfunction
+import matplotlib.pyplot as plt
+import sympy as sym
+import copy
+import time
+np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)
+from graph import *
+from otherFun import *
+from paths import *
+
+
 def findTauMin(lcur,lprev,tprev,tmin):
     bar = lambda X: 1-X
     if tprev<0:
