@@ -5,7 +5,6 @@ Created on Thu May 25 12:15:22 2023
 @author: remco
 """
 import numpy as np
-from IPython.core.magics.osm import line_cell_magic
 from inspect import isfunction
 import matplotlib.pyplot as plt
 import sympy as sym
@@ -126,6 +125,7 @@ r = []
 for i in range(0,len(TrafficRates)):
   for j in range(1,8):
     r.append(TrafficRates[i]/7)
+    
 start1 = time.time()
 F1, _ = FrankWolfe(G,paths,r,itTol=1e-2,LSTol = 1e-2)
 time1 = time.time()-start1
